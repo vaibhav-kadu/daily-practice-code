@@ -1,0 +1,23 @@
+package com.example.jdbc;
+import com.example.jdbc;
+import org.springframework.jdbc.core.RowMapper;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class EmpRowMap implements RowMapper<Employee> {
+
+	    @Override
+	    public Emp mapRow(ResultSet rs, int rowNum) throws SQLException {
+	        Emp emp = new Employee(Emp);
+	        emp.setId(rs.getInt("id"));
+	        emp.setName(rs.getString("name"));
+	        emp.setEmail(rs.getString("email"));
+	        emp.setContact(rs.getString("contact"));
+	        return emp;
+	    }
+	}
+
+}
+
+# commit on 2024-10-24 00:00:00
