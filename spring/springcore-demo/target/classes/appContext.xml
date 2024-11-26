@@ -1,0 +1,13 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans
+       https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="emp" class="q1.Employee">
+        <property name="id" value="1"/>
+        <property name="name" value="VAibhav xml"/>
+        <property name="salary" value="10000"/>
+    </bean>
+
+</beans>
+# commit on 2024-11-27 00:00:00
