@@ -1,0 +1,4 @@
+/mvnw text eol=lf
+*.cmd text eol=crlf
+
+# commit on 2024-12-10 00:00:00
