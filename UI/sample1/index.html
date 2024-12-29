@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Education</title>
+  
+  <style>
+    .nav{
+        padding: 0%;
+        width: 100%;
+        height: 70px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+        position: fixed;
+        background-color: aliceblue;
+        opacity: 95%;
+    }
+
+    .navimg{
+        height: 40px;
+        width: 40px;
+    }
+
+    .container-1-row{
+        padding: 10%;
+        width: 80%;
+        height: 500px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        justify-items: center;
+        align-content: center;
+       /* background-image: url("https://images03.nicepage.com/c461c07a441a5d220e8feb1a/2cb6fd5b4f3b50579d4fa0cb/v-min.png");
+        background-position-y: bottom;
+        background-repeat: no-repeat;
+        background-position-x: right;
+        background-size: 400px 400px;
+        z-index: 0.8;*/
+    }
+
+    .container-1-col{
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;        
+        justify-content: center;
+        border: 1px solid black;
+        background-image: url("https://images03.nicepage.com/c461c07a441a5d220e8feb1a/26b3c422a7e8559fb8661a6b/gfb.jpg");
+        background-size: 150%; 
+        background-repeat: no-repeat;
+        background-position:100%;
+        
+    }
+
+    .btn1{
+        width: 150px;
+        height: 50px;
+        border: 2px solid black;
+        margin-top: 5%;
+    }
+
+    .p1{
+        font-family: sans-serif;
+    }
+
+    .container-2-row{
+        min-width: 100%;
+        height: 340px;
+        background-color: #EAC60B;
+        background-position:bottom;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        justify-content: center;
+        margin-top: 100px;
+
+        box-shadow: 300px 40px 0px 15px green;
+    }
+
+    .container-2-col{
+        width: 230px;
+        height: 230px;
+        background-color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        justify-items: center;
+        align-items: center;
+        align-content: center;
+        font-family: Realway,sans-serif;
+        padding: 25px;
+        margin-top: -3%;
+    }
+
+    .heading5-2{
+        color:#EAC60B;
+        text-transform: uppercase;
+        font-weight: 700;  
+        font-family: Oswald,sans-serif !important; 
+        font-size: 20px;  
+
+    }
+
+    .p2{
+        color: #808080;
+        font-family: Raleway,sans-serif !important;
+        font-style: italic;
+        text-align: center;  /* jiustify / center */
+        word-spacing: 0.9px;
+        letter-spacing: 0.9px;
+        margin: 5px;
+        line-height: 120%;
+    }
+
+    .img-2{
+        background-color:#EAC60B;
+        background:#EAC60B;
+        border-radius: 100%;
+        padding: 5%;
+        width: 50px;
+        height: 50px;
+    }
+
+    .container-3-col{
+        min-width: 100%;
+        height: auto;
+        background-color: #E5E5E5;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    .heading-3{
+        font-family: Oswald,sans-serif !important;
+        font-size: 72px;
+        text-align: center;
+        line-height: normal;
+        margin: 30px;
+    }
+    .para-3{
+        height: 100px;
+        width: 800px; 
+        font-family: Raleway,sans-serif !important;
+        text-align: center;  
+        font-size: 18px;
+        line-height: 30px;
+    }
+    .anc-3{
+        background-color: #EAC60B;  
+        font-family: Raleway,sans-serif !important;
+        text-align: center;  
+        font-size: 14px;
+        margin: 40px;
+        padding: 15px 30px;        
+        word-spacing: 0.9px;
+        letter-spacing: 0.9px;
+        line-height: 30%;
+    }
+
+    .container-4-col{
+        border: 1px solid black;
+        width: 100%;
+        height: 920px;
+        background-image: url("https://images03.nicepage.com/c461c07a441a5d220e8feb1a/823eba63dbe957c0ad3fd7fd/bfmin.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        display: flex;
+        flex-direction: column;        
+        padding-top: 60px;
+        padding-left: 110px;
+
+    }
+    .container-4-col-1{
+        width: 576px;
+        height: 767px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: #EAC60B;
+        font-family: Raleway, sans-serif;
+    }
+    .heading-4-1{         
+        font-family: Oswald,sans-serif !important; 
+        font-size: 36px; 
+    }
+    .heading-4-2{         
+        font-family: Oswald,sans-serif !important; 
+        font-size: 96px; 
+        font-weight: 400;
+        font-style:normal;
+        text-transform: uppercase;
+        text-decoration: solid;
+    }
+
+    .container-5-col{
+        background-image: url("https://images03.nicepage.com/c461c07a441a5d220e8feb1a/13dbcc99bdb05229821033f4/fffmin.jpg");
+        background-position: 50% 50%;
+    }
+
+
+  </style>
+</head>
+
+<body>
+    <div>
+
+        <div class="nav">
+            <img src="https://csite.nicepage.com/Images/logo-w.png">
+        
+            <div class="">
+                <img class="navimg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXQOysVECYZZ9UT9o5E6a4xHgJ79k2BuXRaWARzgzPzh-NU9QOZ7soSqA&s=10">
+                <img class="navimg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgVU1feKp3zUFvxWHLsqGGVfn57YF1UGwvEKKqbb8y0A&s">
+                <img class="navimg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIjYWq36-mW9uVCqEdibQ7RAHVA6_41mq9yjRHon04KGxIKvRD18cF4C34HCG6LmKj4a4&usqp=CAU">
+                <img class="navimg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLNi65TfAk0lt6im7eb1f4anNJjyONy2ueAG8PFcOYCw&s">
+            </div>
+    
+            <div>
+                <img class="" src="https://csite.nicepage.com/Images/Site/icon-close.png">
+            </div>    
+    
+        </div>
+        
+        <div class="container-1-row">
+            <img src="https://images03.nicepage.com/c461c07a441a5d220e8feb1a/2cb6fd5b4f3b50579d4fa0cb/v-min.png" 
+            style="position: absolute;  width: 410px; height: 410px; bottom:-25%; right: 10%;">
+            <div class="container-1-col" style="background-image: none;">
+                <h1 style="color: #EAC60B; font-size: 70px; font-family: Oswald, sans-serif !important ;">HOME RAPAIR </h1>
+                <h2 style="color: darkgrey; font-size: 50px; font-family: Oswald, sans-serif !important ; margin-top: -10%;">& Renovating</h2>
+                <p style="margin-top: 1%;">Cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p style="margin-top: 1%;">Image From <b style="color: #EAC60B;">Freepik</b></p>
+                <button class="btn1">READ MORE</button>
+            </div>
+    
+            <div class="container-1-col">
+                <!--Image in Style-->
+            </div>                
+        </div>    
+        
+        <div class="container-2-row">
+            <div class="container-2-col">
+                <img class="img-2" src="https://cdn-icons-png.flaticon.com/512/2728/2728954.png">
+                <h5 class="heading5-2">HOME CLEANING</h5>
+                <p class="p2">Sample text. Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.</p>
+            </div>
+                
+            <div class="container-2-col">
+                <img class="img-2" src="https://cdn-icons-png.flaticon.com/512/8659/8659373.png">
+                <h5 class="heading5-2">Interior Paintin</h5>
+                <p class="p2">Sample text. Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.</p>
+            </div>
+                
+            <div class="container-2-col">
+                <img class="img-2" src="https://cdn-icons-png.flaticon.com/512/2511/2511546.png">
+                <h5 class="heading5-2">Light Fixtures</h5>
+                <p class="p2">Sample text. Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.</p>
+            </div>
+    
+            <div class="container-2-col">
+                <img class="img-2" src="https://cdn-icons-png.flaticon.com/512/3326/3326474.png">
+                <h5 class="heading5-2">Smart Home</h5>
+                <p class="p2">Sample text. Lorem ipsum dolor sit amet, consectetur adipiscing elit nullam nunc justo sagittis suscipit ultrices.</p>
+            </div>
+    
+        </div>
+    
+        <div class="container-3-col">
+            <h1 class="heading-3">About Us</h1>
+            <p class="para-3">Oh feel if up to till like. He an thing rapid these after going drawn or. Timed she his law the spoil round defer. In surprise concerns informed betrayed he learning is ye. Ignorant formerly so ye blessing. He as spoke avoid given downs money on we. Of properly carriage shutters ye as wandered up repeated moreover.</p>
+            <a class="anc-3">LEARN MORE</a>
+        </div>
+
+        <div class="container-4-col">
+            <div class="container-4-col-1">
+                <h4 class="heading-4-1">repair services</h4>
+                <h1 class="heading-4-2">How Can We Help You?</h1>
+            </div>
+            <h style="color: #E5E5E5;">Image from <i style="color: #EAC60B";>Freepik</i></h>
+        </div>
+
+        <div class="container-5-col">
+            <div class="container-5-col-1">
+                <h1>Popular Services</h1>
+                <p>As a customer-focused solution provider, we’re dedicated to redefining the home improvement service experience for homeowners and commercial property owners.</p>
+            </div>
+            <div class="container-5-row-1">
+                <div class="container-5-row-1-col"></div>
+                <div class="container-5-row-1-col"></div>
+                <div class="container-5-row-1-col"></div>
+                <div class="container-5-row-1-col"></div>
+
+            </div>
+
+        </div>
+        <div></div>
+        <div></div>
+        <div></div>
+
+    </div>
+    
+
+    
+</body>
+
+</html>
+# commit on 2024-12-30 00:00:00
