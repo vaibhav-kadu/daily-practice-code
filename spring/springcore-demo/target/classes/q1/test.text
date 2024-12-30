@@ -1,0 +1,904 @@
+Spring core, Spring JDBC, Spring MVC   Q1. WAP to create class Employee with field id, name and salary and perform setter injection using XML configuration and annotations configuration?   Q2. WAP to create class name as Employee with field id, name and salary and create class name as Company with two methods   void setEmployee (Employee employee)   void showEmployee()   and perform auto wiring between Employee class and Company class and perform auto wiring using using Annotations.   Q3.WAP to implement the spring bean life cycle by using XML configuration and Annotation?   Q4. WAP to create class name as Player with field id name and run and set bean scope with prototype using XML and using Annotations?   Q5.WAP spring core application to create the interface name as Vehicle with method void engine() and create two classes name as Bike and Car and implement the Vehicle interface in it and perform loose coupling using @Autowired and @Qualifier annotations   Q6. WAP to create table name as employee with field id name email and contact and store data in database table using Spring JDBC   Q7. WAP to fetch data from the database table using Spring JDBC   Write a Spring JDBC application to fetch employee records from the database table employee having the following fields:   Id, Name,Email,Contact   Requirements:   1. Use Spring JDBC (JdbcTemplate) to connect to the database.   2. Configure DataSource in Spring configuration.   3. Create an Employee model class.   4. Use RowMapper to map database records to the Employee object.   5. Fetch and display all employee records from the database table.   Q7.WAP to develop a Registration Module using Spring MVC and Spring JDBC   Problem Statement:   Write a Spring MVC web application to register user details, store the data in the database, and fetch the stored data from the database.   -Register form   -View Record in database   spring projects make sure give complet direct run project for every question , dont skip any step even word of code , start from how to start project make sure all are easily understandable as a fresher. thank you, i am using spring ide
+
+Alright 👍 this is basically a full Spring syllabus practical notebook.
+I’ll explain step-by-step like you’re a fresher, starting from how to create the project in Spring Tool Suite (Spring IDE) and then complete runnable code for each question.
+I’ll use simple Maven projects, XML + Annotation configs, and MySQL for JDBC.
+
+🔰 COMMON SETUP (FOR ALL SPRING CORE + JDBC PROJECTS)
+1️⃣ Create Spring Project in Spring IDE
+    1. Open Spring Tool Suite
+    2. File → New → Maven Project
+    3. Check Create a simple project
+    4. Click Next
+    5. Fill:
+    • Copy codeGroup Id :com.springArtifact Id :springcore-demo(changeperquestionifneeded)Packaging :jar
+    6. Finish
+
+2️⃣ pom.xml (COMMON)
+Use this pom.xml for Spring Core + JDBC projects.
+Copy code<projectxmlns="http://maven.apache.org/POM/4.0.0"xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.spring</groupId>
+    <artifactId>spring-demo</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <dependencies>
+
+        <!-- Spring Core --><dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>5.3.30</version>
+        </dependency>
+
+        <!-- Spring JDBC --><dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>5.3.30</version>
+        </dependency>
+
+        <!-- MySQL Driver --><dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.33</version>
+        </dependency>
+
+    </dependencies>
+
+</project>
+
+✅ Q1. Setter Injection (XML + Annotation)
+🔹 Employee.java
+Copy codepackage com.spring.q1;
+
+publicclassEmployee {
+    privateint id;
+    private String name;
+    privatedouble salary;
+
+    publicvoidsetId(int id) {
+        this.id = id;
+    }
+    publicvoidsetName(String name) {
+        this.name = name;
+    }
+    publicvoidsetSalary(double salary) {
+        this.salary = salary;
+    }
+
+    publicvoiddisplay() {
+        System.out.println(id + " " + name + " " + salary);
+    }
+}
+
+🔹 XML Configuration (applicationContext.xml)
+Copy code<beansxmlns="http://www.springframework.org/schema/beans"xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <beanid="emp"class="com.spring.q1.Employee">
+        <propertyname="id"value="101"/>
+        <propertyname="name"value="Rahul"/>
+        <propertyname="salary"value="45000"/>
+    </bean>
+
+</beans>
+
+🔹 Main Class
+Copy codepackage com.spring.q1;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+publicclassTest {
+    publicstaticvoidmain(String[] args) {
+        ApplicationContextctx=newClassPathXmlApplicationContext("applicationContext.xml");
+
+        Employeee= (Employee) ctx.getBean("emp");
+        e.display();
+    }
+}
+
+🔹 Annotation Version
+Employee.java
+Copy code@ComponentpublicclassEmployee {
+    @Value("102")privateint id;
+    @Value("Amit")private String name;
+    @Value("50000")privatedouble salary;
+
+    publicvoiddisplay() {
+        System.out.println(id + " " + name + " " + salary);
+    }
+}
+applicationContext.xml
+Copy code<context:component-scanbase-package="com.spring.q1"/>
+
+✅ Q2. Autowiring Employee → Company (Annotation)
+Employee.java
+Copy code@ComponentpublicclassEmployee {
+    privateintid=1;
+    privateStringname="Neha";
+    privatedoublesalary=60000;
+
+    public String toString() {
+        return id + " " + name + " " + salary;
+    }
+}
+Company.java
+Copy code@ComponentpublicclassCompany {
+
+    @Autowiredprivate Employee employee;
+
+    publicvoidshowEmployee() {
+        System.out.println(employee);
+    }
+}
+Main
+Copy codepublicclassTest {
+    publicstaticvoidmain(String[] args) {
+        ApplicationContextctx=newClassPathXmlApplicationContext("applicationContext.xml");
+
+        Companyc= ctx.getBean(Company.class);
+        c.showEmployee();
+    }
+}
+
+✅ Q3. Spring Bean Life Cycle
+XML Based
+Copy codepublicclassDemoBean {
+    publicvoidinit() {
+        System.out.println("Bean Initialized");
+    }
+    publicvoiddestroy() {
+        System.out.println("Bean Destroyed");
+    }
+}
+Copy code<beanclass="com.spring.q3.DemoBean"init-method="init"destroy-method="destroy"/>
+
+Annotation Based
+Copy code@ComponentpublicclassDemoBean {
+
+    @PostConstructpublicvoidstart() {
+        System.out.println("Init");
+    }
+
+    @PreDestroypublicvoidend() {
+        System.out.println("Destroy");
+    }
+}
+
+✅ Q4. Bean Scope Prototype
+XML
+Copy code<beanclass="com.spring.q4.Player"scope="prototype"/>
+Annotation
+Copy code@Component@Scope("prototype")publicclassPlayer {
+    privateint id;
+    private String name;
+    privateint run;
+}
+
+✅ Q5. Loose Coupling (@Autowired + @Qualifier)
+Vehicle.java
+Copy codepublicinterfaceVehicle {
+    voidengine();
+}
+Bike.java
+Copy code@Component("bike")publicclassBikeimplementsVehicle {
+    publicvoidengine() {
+        System.out.println("Bike Engine");
+    }
+}
+Car.java
+Copy code@Component("car")publicclassCarimplementsVehicle {
+    publicvoidengine() {
+        System.out.println("Car Engine");
+    }
+}
+Travel.java
+Copy code@ComponentpublicclassTravel {
+
+    @Autowired@Qualifier("car")private Vehicle vehicle;
+
+    publicvoidstartJourney() {
+        vehicle.engine();
+    }
+}
+
+✅ Q6. Insert Data using Spring JDBC
+Database
+Copy codecreate table employee(
+id intprimary key,
+name varchar(50),
+email varchar(50),
+contact varchar(15)
+);
+
+Employee.java
+Copy codepublicclassEmployee {
+    privateint id;
+    private String name;
+    private String email;
+    private String contact;
+}
+applicationContext.xml
+Copy code<beanid="ds"class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <propertyname="driverClassName"value="com.mysql.cj.jdbc.Driver"/>
+    <propertyname="url"value="jdbc:mysql://localhost:3306/test"/>
+    <propertyname="username"value="root"/>
+    <propertyname="password"value="root"/>
+</bean>
+
+<beanid="jdbcTemplate"class="org.springframework.jdbc.core.JdbcTemplate">
+    <propertyname="dataSource"ref="ds"/>
+</bean>
+Insert Code
+Copy codeJdbcTemplatejt= ctx.getBean(JdbcTemplate.class);
+jt.update("insert into employee values(?,?,?,?)",
+          1,"Raj","raj@gmail.com","9876543210");
+
+✅ Q7. Fetch Data using RowMapper
+Copy codeList<Employee> list = jt.query(
+    "select * from employee",
+    newRowMapper<Employee>() {
+        public Employee mapRow(ResultSet rs, int row) throws SQLException {
+            Employeee=newEmployee();
+            e.setId(rs.getInt("id"));
+            e.setName(rs.getString("name"));
+            e.setEmail(rs.getString("email"));
+            e.setContact(rs.getString("contact"));
+            return e;
+        }
+    });
+
+list.forEach(System.out::println);
+
+✅ Q8. Spring MVC + JDBC Registration Module (Overview)
+Structure
+Copy codeController → Service → DAO → Database
+JSP Form → Submit → Save → View Records
+If you want, I can next give you:
+    • Complete Spring MVC project
+    • Controller + JSP + DAO + JDBC
+    • web.xml + dispatcher-servlet.xml
+    • Form + View Page
+    • Exact folder structure
+Just tell me 👉 “Give full Spring MVC Registration project” 💯
+
+
+you forgot where needs to create files
+
+You’re absolutely right 👍
+That’s the most important part for a fresher, and thanks for catching it.
+Below is a CLEAR, STEP-BY-STEP FILE + FOLDER STRUCTURE, showing WHERE each file is created, WHAT to name it, and WHAT goes inside it.
+I’ll do this properly, slowly, and without skipping anything.
+
+🔰 BASIC PROJECT STRUCTURE (Spring IDE – Maven)
+After creating a Maven Project, you will see:
+Copy codespring-demo
+│
+├── src/main/java
+│   └── com/spring
+│
+├── src/main/resources
+│
+├── src/test/java
+│
+└── pom.xml
+
+✅ Q1. Setter Injection (XML + Annotation)
+📁 Create Package
+Copy codesrc/main/java
+└── com.spring.q1
+📄 Employee.java
+📍 Location
+src/main/java/com/spring/q1/Employee.java
+Copy codepackage com.spring.q1;
+
+publicclassEmployee {
+    privateint id;
+    private String name;
+    privatedouble salary;
+
+    publicvoidsetId(int id) { this.id = id; }
+    publicvoidsetName(String name) { this.name = name; }
+    publicvoidsetSalary(double salary) { this.salary = salary; }
+
+    publicvoiddisplay() {
+        System.out.println(id + " " + name + " " + salary);
+    }
+}
+
+📄 Test.java
+📍 src/main/java/com/spring/q1/Test.java
+Copy codepackage com.spring.q1;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+publicclassTest {
+    publicstaticvoidmain(String[] args) {
+        ApplicationContextctx=newClassPathXmlApplicationContext("applicationContext.xml");
+
+        Employeee= (Employee) ctx.getBean("emp");
+        e.display();
+    }
+}
+
+📄 applicationContext.xml
+📍 IMPORTANT
+src/main/resources/applicationContext.xml
+Copy code<beansxmlns="http://www.springframework.org/schema/beans"xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <beanid="emp"class="com.spring.q1.Employee">
+        <propertyname="id"value="101"/>
+        <propertyname="name"value="Rahul"/>
+        <propertyname="salary"value="45000"/>
+    </bean>
+
+</beans>
+
+✅ Q2. Autowiring (Employee ↔ Company)
+📁 Create Package
+Copy codesrc/main/java
+└── com.spring.q2
+
+📄 Employee.java
+📍 src/main/java/com/spring/q2/Employee.java
+Copy codepackage com.spring.q2;
+
+import org.springframework.stereotype.Component;
+
+@ComponentpublicclassEmployee {
+    privateintid=1;
+    privateStringname="Neha";
+    privatedoublesalary=60000;
+
+    public String toString() {
+        return id + " " + name + " " + salary;
+    }
+}
+
+📄 Company.java
+📍 src/main/java/com/spring/q2/Company.java
+Copy codepackage com.spring.q2;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@ComponentpublicclassCompany {
+
+    @Autowiredprivate Employee employee;
+
+    publicvoidshowEmployee() {
+        System.out.println(employee);
+    }
+}
+
+📄 applicationContext.xml
+📍 src/main/resources/applicationContext.xml
+Copy code<beansxmlns="http://www.springframework.org/schema/beans"xmlns:context="http://www.springframework.org/schema/context"xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scanbase-package="com.spring.q2"/>
+</beans>
+
+📄 Test.java
+📍 src/main/java/com/spring/q2/Test.java
+Copy codepackage com.spring.q2;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+publicclassTest {
+    publicstaticvoidmain(String[] args) {
+        ApplicationContextctx=newClassPathXmlApplicationContext("applicationContext.xml");
+
+        Companyc= ctx.getBean(Company.class);
+        c.showEmployee();
+    }
+}
+
+✅ Q3. Spring Bean Life Cycle
+📁 Package
+Copy codesrc/main/java/com.spring.q3
+
+📄 DemoBean.java
+📍 src/main/java/com/spring/q3/DemoBean.java
+Copy codepackage com.spring.q3;
+
+publicclassDemoBean {
+
+    publicvoidinit() {
+        System.out.println("Bean Initialized");
+    }
+
+    publicvoiddestroy() {
+        System.out.println("Bean Destroyed");
+    }
+}
+
+📄 applicationContext.xml
+📍 src/main/resources/applicationContext.xml
+Copy code<beanclass="com.spring.q3.DemoBean"init-method="init"destroy-method="destroy"/>
+
+✅ Q4. Bean Scope Prototype
+📁 Package
+Copy codesrc/main/java/com.spring.q4
+
+📄 Player.java
+📍 src/main/java/com/spring/q4/Player.java
+Copy codepackage com.spring.q4;
+
+publicclassPlayer {
+    privateint id;
+    private String name;
+    privateint run;
+}
+
+📄 applicationContext.xml
+📍 src/main/resources/applicationContext.xml
+Copy code<beanclass="com.spring.q4.Player"scope="prototype"/>
+
+✅ Q5. Loose Coupling
+📁 Package
+Copy codesrc/main/java/com.spring.q5
+
+📄 Vehicle.java
+📍 src/main/java/com/spring/q5/Vehicle.java
+Copy codepackage com.spring.q5;
+
+publicinterfaceVehicle {
+    voidengine();
+}
+
+📄 Bike.java
+📍 src/main/java/com/spring/q5/Bike.java
+Copy codepackage com.spring.q5;
+
+import org.springframework.stereotype.Component;
+
+@Component("bike")publicclassBikeimplementsVehicle {
+    publicvoidengine() {
+        System.out.println("Bike Engine");
+    }
+}
+
+📄 Car.java
+📍 src/main/java/com/spring/q5/Car.java
+Copy codepackage com.spring.q5;
+
+import org.springframework.stereotype.Component;
+
+@Component("car")publicclassCarimplementsVehicle {
+    publicvoidengine() {
+        System.out.println("Car Engine");
+    }
+}
+
+📄 Travel.java
+📍 src/main/java/com/spring/q5/Travel.java
+Copy codepackage com.spring.q5;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+@ComponentpublicclassTravel {
+
+    @Autowired@Qualifier("car")private Vehicle vehicle;
+
+    publicvoidstart() {
+        vehicle.engine();
+    }
+}
+
+✅ Q6 & Q7 (Spring JDBC)
+📁 Package
+Copy codesrc/main/java/com.spring.jdbc
+
+📄 Employee.java
+📍 src/main/java/com/spring/jdbc/Employee.java
+📄 JdbcTest.java
+📍 src/main/java/com/spring/jdbc/JdbcTest.java
+📄 applicationContext.xml
+📍 src/main/resources/applicationContext.xml
+(contains DataSource + JdbcTemplate)
+
+🧠 VERY IMPORTANT NOTES FOR FRESHERS
+✅ Java files → src/main/java
+✅ XML files → src/main/resources
+✅ Main method → always in Java class
+✅ One project = one applicationContext.xml
+✅ Run → Right click Test.java → Run As → Java Application
+
+👉 Next step?
+If you want, I can now:
+    • Give FULL Spring JDBC project with DAO + RowMapper
+    • Give FULL Spring MVC Registration Project (web.xml, JSP, controller, DAO)
+    • Or convert everything into annotations only
+Just tell me 👍
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+7. Spring JDBC – Fetch Employee Records
+
+We will create a Spring Boot application that:
+
+Connects to DB using JdbcTemplate
+
+Fetches records from employee table
+
+Displays them in console
+
+1️⃣ Prerequisites
+
+Make sure you have:
+
+Java JDK 8+
+
+Maven
+
+MySQL (or any DB)
+
+IDE (IntelliJ / Eclipse / STS)
+
+2️⃣ Database Setup
+Create Database & Table
+CREATE DATABASE springjdbcdb;
+
+USE springjdbcdb;
+
+CREATE TABLE employee (
+    id INT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100),
+    contact VARCHAR(15)
+);
+
+INSERT INTO employee VALUES
+(1, 'Amit', 'amit@gmail.com', '9876543210'),
+(2, 'Neha', 'neha@gmail.com', '9123456789');
+
+3️⃣ Create Spring Boot Project
+Option A: Using Spring Initializr (Recommended)
+
+Go to 👉 https://start.spring.io/
+
+Select:
+
+Project: Maven
+
+Language: Java
+
+Spring Boot: Default
+
+Dependencies:
+
+Spring JDBC
+
+MySQL Driver
+
+Click Generate
+
+Extract & open in IDE
+
+4️⃣ Project Structure
+spring-jdbc-demo
+│
+├── src/main/java
+│   └── com/example/jdbc
+│       ├── SpringJdbcApplication.java
+│       ├── model
+│       │   └── Employee.java
+│       ├── dao
+│       │   └── EmployeeDao.java
+│       └── rowmapper
+│           └── EmployeeRowMapper.java
+│
+├── src/main/resources
+│   └── application.properties
+│
+└── pom.xml
+
+5️⃣ pom.xml (Dependencies)
+<dependencies>
+
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-jdbc</artifactId>
+    </dependency>
+
+    <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-j</artifactId>
+        <scope>runtime</scope>
+    </dependency>
+
+</dependencies>
+
+6️⃣ application.properties (DataSource Configuration)
+spring.datasource.url=jdbc:mysql://localhost:3306/springjdbcdb
+spring.datasource.username=root
+spring.datasource.password=yourpassword
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+spring.jpa.show-sql=true
+
+
+✔ This satisfies Requirement #2 (DataSource Configuration)
+
+7️⃣ Employee Model Class
+
+📄 Employee.java
+
+package com.example.jdbc.model;
+
+public class Employee {
+
+    private int id;
+    private String name;
+    private String email;
+    private String contact;
+
+    public Employee() {}
+
+    public Employee(int id, String name, String email, String contact) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.contact = contact;
+    }
+
+    // Getters & Setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
+
+    @Override
+    public String toString() {
+        return id + " " + name + " " + email + " " + contact;
+    }
+}
+
+
+✔ Requirement #3 satisfied
+
+8️⃣ RowMapper Class
+
+📄 EmployeeRowMapper.java
+
+package com.example.jdbc.rowmapper;
+
+import com.example.jdbc.model.Employee;
+import org.springframework.jdbc.core.RowMapper;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class EmployeeRowMapper implements RowMapper<Employee> {
+
+    @Override
+    public Employee mapRow(ResultSet rs, int rowNum) throws SQLException {
+        Employee emp = new Employee();
+        emp.setId(rs.getInt("id"));
+        emp.setName(rs.getString("name"));
+        emp.setEmail(rs.getString("email"));
+        emp.setContact(rs.getString("contact"));
+        return emp;
+    }
+}
+
+
+✔ Requirement #4 satisfied
+
+9️⃣ DAO Class (JdbcTemplate Usage)
+
+📄 EmployeeDao.java
+
+package com.example.jdbc.dao;
+
+import com.example.jdbc.model.Employee;
+import com.example.jdbc.rowmapper.EmployeeRowMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public class EmployeeDao {
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
+    public List<Employee> getAllEmployees() {
+        String sql = "SELECT * FROM employee";
+        return jdbcTemplate.query(sql, new EmployeeRowMapper());
+    }
+}
+
+
+✔ Requirement #1 & #5 satisfied
+
+🔟 Main Class (Run & Display Output)
+
+📄 SpringJdbcApplication.java
+
+package com.example.jdbc;
+
+import com.example.jdbc.dao.EmployeeDao;
+import com.example.jdbc.model.Employee;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.util.List;
+
+@SpringBootApplication
+public class SpringJdbcApplication implements CommandLineRunner {
+
+    @Autowired
+    private EmployeeDao employeeDao;
+
+    public static void main(String[] args) {
+        SpringApplication.run(SpringJdbcApplication.class, args);
+    }
+
+    @Override
+    public void run(String... args) {
+        List<Employee> employees = employeeDao.getAllEmployees();
+        employees.forEach(System.out::println);
+    }
+}
+
+1️⃣1️⃣ Run the Project
+In IDE:
+
+Right click → Run SpringJdbcApplication
+
+Output:
+1 Amit amit@gmail.com 9876543210
+2 Neha neha@gmail.com 9123456789
+
+
+🎉 Application runs successfully!
+
+📌 Exam-Ready Summary
+
+JdbcTemplate used for DB operations
+
+DataSource configured in application.properties
+
+Employee POJO created
+
+RowMapper maps DB rows to object
+
+Records fetched and displayed
+
+If you want:
+
+XML configuration version
+
+Without Spring Boot
+
+CRUD operations
+
+Controller + REST API
+
+Just tell me 👍
+
+Export response as a Word file
+Export response as a PDF file
+i want to start with spring ide 
+
+Perfect 👍
+Let’s do this step-by-step using Spring IDE (STS – Spring Tool Suite), from installation → project creation → run.
+No shortcuts, beginner-friendly.
+
+🚀 How to Start Spring JDBC Project using Spring IDE (STS)
+1️⃣ Install Spring IDE (STS)
+Download:
+
+👉 https://spring.io/tools
+
+Choose:
+
+Spring Tools 4 for Eclipse
+
+Download for Windows / Mac / Linux
+
+Install:
+
+Extract ZIP
+
+Open SpringToolSuite4.exe
+
+
+
+
+SUCCESS!
+
+ Viva / Exam Lines (Very Important)
+
+STS provides built-in support for Spring projects
+
+JdbcTemplate simplifies JDBC code
+
+RowMapper maps ResultSet to Java object
+
+DataSource configured in application.properties
+
+If you want next:
+✔ XML based Spring JDBC
+✔ CRUD operations
+✔ Controller + REST API
+✔ Interview questions
+
+Just say the word 😄
+
+
+
+# commit on 2024-12-31 00:00:00
