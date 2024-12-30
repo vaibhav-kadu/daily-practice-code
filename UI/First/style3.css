@@ -1,0 +1,14 @@
+
+
+h1{
+	background-color: orange;
+
+	/*  height and width is always applied to the content  */
+	height: 300px;
+	width: 300px;
+	border: 10px solid black;
+	padding: 30px;
+	margin: 10px;
+	box-sizing: border-box;
+}
+# commit on 2024-12-31 00:00:00
