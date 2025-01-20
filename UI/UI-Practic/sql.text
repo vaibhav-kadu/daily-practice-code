@@ -1,0 +1,150 @@
+1.1. Write a SQL query to find the students who scored more than 80 marks in
+any course. Display student name, course name and marks.
+
+select s.student_name,c.course_name,t.mark from test t join (student s ,  course c) on (t.student_id=s.student_id and c.course_id=t.course_id) where t.mark>80;
++--------------+-------------+------+
+| student_name | course_name | mark |
++--------------+-------------+------+
+| a            | java        |   95 |
++--------------+-------------+------+
+
+
+2. Write a SQL query to count how many students enrolled in each course.
+Display course name and total students.
+
+select c.course_name , count(c.course_id)  from test t join course c on t.course_id=c.course_id group by course_name ;
++-------------+--------------------+
+| course_name | count(c.course_id) |
++-------------+--------------------+
+| java        |                  1 |
+| c           |                  2 |
+| python      |                  1 |
++-------------+--------------------+
+
+
+3.Write a SQL query to find students who enrolled in multiple courses using
+GROUP BY and HAVING clause.
+
+select s.student_name , count(t.course_id)   from test t join student s on t.student_id=s.Student_id group by student_name having count(t.course_id)>1 ;
++--------------+--------------------+
+| student_name | count(t.course_id) |
++--------------+--------------------+
+| a            |                  2 |
++--------------+--------------------+
+
+
+
+
+4. Write a SQL query using subquery to find students who scored above the
+average marks of all students.
+
+select s.student_name , t.mark   from test t join student s on t.student_id=s.Student_id where t.mark>(select avg(mark) from test)  ;
++--------------+------+
+| student_name | mark |
++--------------+------+
+| a            |   95 |
++--------------+------+
+
+
+5. Write a SQL query to display student names along with their enrolled course
+names and obtained marks by joining Student, Enrollment and Course tables.
+
+select s.student_name,c.course_name,t.mark from test t join (student s ,  course c) on (t.student_id=s.student_id and c.course_id=t.course_id) ;
++--------------+-------------+------+
+| student_name | course_name | mark |
++--------------+-------------+------+
+| a            | java        |   95 |
+| a            | c           |   50 |
+| c            | c           |   60 |
+| d            | python      |   68 |
++--------------+-------------+------+
+
+
+6. Write a SQL query to display student name, city and course name for
+students whose city is Pune using JOIN.
+
+
+select s.student_name,c.course_name,s.city from test t left join (student s ,  course c) on (t.student_id=s.student_id and c.course_id=t.course_id) where city="pune" ;
++--------------+-------------+------+
+| student_name | course_name | city |
++--------------+-------------+------+
+| d            | python      | pune |
+| g            | c           | pune |
++--------------+-------------+------+
+
+
+
+7. Write a SQL query to display the student name and marks of the student who
+scored the highest marks using JOIN and subquery.
+
+ select s.student_name,c.course_name,t.mark from test t left join (student s ,  course c) on (t.student_id=s.student_id and c.course_id=t.course_id) where mark=(select max(mark) from test) ;
++--------------+-------------+------+
+| student_name | course_name | mark |
++--------------+-------------+------+
+| a            | java        |   95 |
++--------------+-------------+------+
+
+
+8. Write a SQL query to find students who enrolled in more than one course
+using GROUP BY and HAVING.
+
+select s.student_name,count(t.course_id)  from test t join student s on t.student_id=s.student_id group
+by t.student_id having count(t.course_id)>1 ;
++--------------+--------------------+
+| student_name | count(t.course_id) |
++--------------+--------------------+
+| a            |                  2 |
++--------------+--------------------+
+
+
+
+9. Write a SQL query to display course names and average marks obtained by
+students in each course.
+
+select c.course_name,avg(t.mark)  from test t join course c on t.course_id=c.course_id group by t.course
+_id ;
++-------------+-------------+
+| course_name | avg(t.mark) |
++-------------+-------------+
+| java        |     95.0000 |
+| c           |     61.6667 |
+| python      |     68.0000 |
++-------------+-------------+
+
+
+10. Write a SQL query using subquery to display students whose marks are
+greater than the average marks of all students.
+
+select s.student_name, t.mark   from test t join student s on t.student_id=s.student_id where mark>(sele
+ct avg(mark) from test) ;
++--------------+------+
+| student_name | mark |
++--------------+------+
+| a            |   95 |
+| g            |   75 |
++--------------+------+
+
+
+
+11. find student who enrolled in at list 2 courses but score above 60 in all.
+
+
+
+ select s.student_name from test t join student s on t.student_id=s.student_id where t.mark>60 group by student_name  having count(s.student_id)>1;
++--------------+
+| student_name |
++--------------+
+| a            |
++--------------+
+
+
+
+
+14. 14. Create a view that displays student name, course name and marks
+using JOIN.
+
+create view temp as select s.student_name,c.course_name,t.mark from test t join (student s ,  course c) on (t.student_id=s.student_id and c.course_id=t.course_id) ;
+
+
+
+# commit on 2025-01-21 00:00:00
