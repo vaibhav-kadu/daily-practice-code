@@ -1,0 +1,22 @@
+td,th,tr{
+    text-align:center;
+    font-size:20px;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+button{
+    height: 50px;
+    width: 150px;
+    border: 1px solid black;
+}
+
+table{
+    text-align:center;
+    font-size:20px;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+
+# commit on 2025-02-12 00:00:00
