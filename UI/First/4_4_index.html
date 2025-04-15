@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+	<style>
+		/* div {
+			background-color: red;
+		} */
+
+		#b1 {
+			background-color: orange;
+		}
+
+		.parent {
+
+			min-height: 500px;
+			max-width: 1000px;
+			border: 1px solid black;
+		}
+
+		.box {
+			height: 100%;
+			width: 50%;
+			border: 1px solid black;
+
+
+			/*  rounded corner, u can give any value in any unit   */
+			/*  if u want circle then u can give 50% */
+			/* border-radius: 50%; */
+
+			background-color: rgba(0, 0, 255, 0.5) !important;
+			/* opacity: 0; */
+
+			/*  opciaty: it defins the transparency  */
+			/*  it  is having value range from 0 to 1 */
+			/* 1. : no transparency  */
+			/* 0 : fully transparent  */
+		}
+
+		/*  firt letter , firts line */
+		p::selection {
+			background-color: darkmagenta;
+		}
+
+		p::before {
+			/* content  alwayya smandatory here  */
+			content: "khushallllllllllllllllllllllllllllllllllllllllllllllllllllllllll";
+
+		}
+
+
+		p::after {
+			/* content  alwayya smandatory here  */
+			content: "Dhaleleeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
+
+		}
+
+		.another {
+			height: 300px;
+			width: 300px;
+			border: 1px solid black;
+
+			/* horiozontal, vertical ,blurnnes ,spread,  color */
+
+			/*  u can  also apply multiple shaodwn */
+			box-shadow: 10px 20px 20px 2px red;
+
+
+			/*  sprad value is not allowed rest of nthings are same here  */
+			text-shadow: 10px 20px 10px red;
+		}
+	</style>
+</head>
+
+<body>
+
+
+	<!--  spccficity:  targettig same element  with diffrenet ways or selectors and appply same
+	  property with diffrenet value  -->
+
+
+	<!-- priority : element ---- class -----id----inline css---- !important  -->
+	<!--  least priority to element and highets to inlibne css  -->
+
+	<!--  highest prority is given to !important  -->
+
+
+	<div class="parent">
+		<div class="box" id="b1" style="background-color: green;">
+			This isbox
+		</div>
+
+	</div>
+
+	<!--  pesudo elements:1. u can apply the styling to the specific part of the content usng psedoc lasses 
+	  u can also consider as alternative of span  -->
+	<!-- 2. u can also write the content using psedo elements like after and before  -->
+
+
+	<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum aut eligendi porro fugit neque hic vero
+		distinctio cumque aliquid reprehenderit! Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
+		culpa iste quia eveniet placeat aperiam aspernatur! Voluptas voluptatibus optio aliquam architecto
+		voluptatem nobis beatae quidem quam nulla, excepturi, amet facilis!</p>
+
+
+	<!-- colors in css 
+		 1.nromal color
+		 2. rgb color  r-red , g-green , b-blue rgb(233,32,34), 0-255 , 255: highets intensity , means dark 
+		 0:lowest intensity 
+		 3.rgba, a-opacity 
+		 4.hexadecimal  -->
+
+
+	<!--  css units , px , rem , %, vh, vw  -->
+	<!--  rest of units are not important much  -->
+
+	<!--  % always refer to the parent  -->
+	<!--  but it will not work if parent element isgiven min and max height   -->
+
+	<!--  shaodow , gradiesnt , font prop am text prop, animation   -->
+
+
+	<br>
+	<br>
+	<br>
+	<br>
+
+
+	<div class="another">
+
+
+		This is another
+	</div>
+
+
+
+
+	<br>
+	<br>
+	<br>
+	<br>
+
+
+</body>
+
+</html>
+# commit on 2025-04-16 00:00:00
