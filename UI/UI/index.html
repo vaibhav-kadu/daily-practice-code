@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <link rel="stylesheet" href="index.css">
+    <style>
+       
+    </style>
+    <script type="text/javascript" src="index.js"></script>
+</head>
+<body>
+    <div class="main">
+        <form method="get" >
+            <div class="inn">
+            <label for="name">Full Name</label>
+            <input  id="name" name="name" type="text" value="" placeholder="Enter Full Name" oninput="nameVal(this.value)" required/>
+            <span id="sname"></span>
+            <br><br>
+
+            
+            <label for="email">Email</label>
+            <input  id="email" name="email" type="text" value="" placeholder="Enter Email"  oninput="emailVal(this.value)" required/>
+            <span id="semail"></span>
+            <br><br>
+
+            <label for="contact">Contact</label>
+            <input  id="contach" name="contact" type="text" value="" oninput="contactVal(this.value)" placeholder="Enter Contact" required/>
+            <span id="scontact"></span>
+            <br><br>
+
+            <label for="gender">Gender</label><br>
+            <label for="gender1">Male</label>
+            <input  style="width: 30px; height: 30px;" id="gender1" name="gender" type="radio" value="male"  required/>
+            <label for="gender2">Female</label>
+            <input style="width: 30px; height: 30px;"  id="gender2" name="gender" type="radio" value="female"  required/>
+            <br><br>
+
+            <label for="dob">Date of Birth</label>
+            <input  id="dob" name="dob" value="" type="date"  onchange="dobVal(this.value)" required/>
+            <span id="sdob"></span>
+            <br><br>
+            <br><br>
+
+            <label for="address">Address</label>
+            <input  id="address" name="address" value="" type="text" oninput="addressVal(this.value)" placeholder="Enter Full Address" required/>
+            <span id="saddress"></span>
+            <br><br>
+
+            <label for="select">Select Course</label>
+            <select id="select"   required>
+                <option value="BCA" >BCA</option>
+                <option value="BBA" >BBA</option>
+                <option value="B.Sc" >B.Sc</option>
+                <option value="B.Com" >B.Com</option>
+                <option value="BA" >BA</option>
+            </select>
+            <br>
+            <br>
+
+            <label for="pass">Password</label>
+            <input  id="pass" name="pass" value="" oninput="passVal(this.value)" type="text" placeholder="Enter Password" required/>
+              <span id="spass"></span>
+            <br><br>
+
+            <label for="cpass">Confirm Password</label>
+            <input  id="cpass" name="cpass" value="" type="text" oninput="cpassVal(this.value)" placeholder="Confirm Password" required/>
+            <span id="scpass"></span>
+            <br><br>
+
+            <label for="submit"></label>
+            <input style=" background-color: rgb(82, 82, 155);" id="submit" name="submit" value="SUBMIT" type="button" />
+          
+            <br><br>
+</div>
+        </form>
+    </div>
+</body>
+</html>
+# commit on 2025-05-12 00:00:00
