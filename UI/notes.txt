@@ -1,0 +1,55 @@
+.container{
+
+    mini-height:600px; // minimum size 
+    width: 100%;
+    border: 1px solid black;
+    padding 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 20px;
+    row-gap:20px;
+    flex-direction: column;
+    
+    flex-wrap:  wrap;  //make responsive according to device it reduses the size 
+    row-gap: 40 px; // gap between rows
+
+
+}
+
+.box{
+    width: 230px;
+    height: 200px;
+    border: 1px solid black;
+}
+
+
+
+
+31/03/2025
+
+gridbox:--
+        * it is always used by experience developers to design the layout of the webpage.
+        * 2D anamination
+         ______________
+        |_1__|_2__|_3__|
+        |_4__|_5__|_6__|
+        |_7__|_8__|_9__|
+
+        * like table
+        * arrange child box grid box in rows and column
+        * go to the parent display:grid; // grid boxes is created
+        * childs is grid items are alocated in equal height
+        * for agganging rows and column 
+                properties=>  grid-template-columns:200px 100px 200px; // 3 columns created with width
+                                 grid-template-columns:auto auto; // equal height and  width
+                        
+                              grid-template-rows:200px 100px 200px; // 3 rows created with width
+                              grid-template-rows:auto auto auto; // auto equal height/ width
+
+                              grid-template-rows: repeat(3,auto); // number 
+                              grid-template-rows: repeat(3,100px);
+
+
+
+# commit on 2025-06-12 00:00:00
