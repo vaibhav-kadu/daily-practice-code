@@ -1,0 +1,19 @@
+package q1;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component
+public class EmpAnno {
+	    @Value("102")
+	    private int id;
+	    @Value("Amit")
+	    private String name;
+	    @Value("50000")
+	    private double salary;
+
+	    public void display() {
+	        System.out.println(id + " " + name + " " + salary);
+	    }
+	}
+# commit on 2025-07-04 00:00:00
