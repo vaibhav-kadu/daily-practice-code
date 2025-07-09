@@ -1,0 +1,106 @@
+<html>
+
+<head>
+<title>EMI Calculator</title>
+<style>
+
+input{
+	width: 300px;
+	height:150px;
+}
+ .container-2-row{
+        min-width: 500px;
+        height: 500px;
+        background-color: #999999;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        justify-content: center;
+        margin-top: 100px;
+    }
+
+    .container-2-col{
+        width: 400px;
+        height: 300px;
+        background-color: #99b7d2;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        justify-items: center;
+        align-items: center;
+        align-content: center;
+        font-family: Realway,sans-serif;
+        padding: 25px;
+    }
+</style>
+<script type='text/javascript'>
+  let qty,rate,total;
+  function acceptQty(){
+    qty=parseInt(document.getElementById("qty").value);
+  }
+  function acceptRate(){
+    rate=parseInt(document.getElementById("rate").value);
+	total=qty*rate;
+	document.getElementById("total").value=""+total;
+  }
+  let p_amount,duration,interast;
+  function accept_p_amount(){
+	p_amount=parseInt(document.getElementById("p_amount").value);
+  }
+  
+  function accept_l_duration(){
+	duration=parseInt(document.getElementById("duration").value);
+  }
+  
+  function accept_l_interest(){
+	interest=parseInt(document.getElementById("interest").value);
+  }
+  function show(){
+  }
+  
+</script>
+</head>
+<body>
+<div class="container-2-row">
+            <div class="container-2-col">
+				<input type='text' name='f' id='qty' value='' placeholder='Enter quantity' onkeyup='acceptQty()'/> <br><br>
+				<input type='text' name='s' id='rate' value='' placeholder='Enter Rate' onkeyup='acceptRate()'/><br><br>
+				<input type='text' name='r' id='total' value='' placeholder='Show Total'/> <br><br>
+			</div>
+                
+            <div class="container-2-col" style="background-color: green">
+                <input type='text' name='f' id='p_amount' value='' placeholder='Loan Amount' onkeyup='accept_p_amount()'/> <br><br>
+				<input type='text' name='s' id='duration' value='' placeholder='Tenure (Years)' onkeyup='accept_l_duration()'/><br><br>
+				<input type='text' name='r' id='Interest' value='' placeholder='Interest Rate (% P.A.)' onkeyup='accept_l_interest()'/><br><br>
+				<input type='button' name='btn' id='calculate' value='Calculate'  onclick='show()'/><br><br>
+            </div>
+			<div class="container-2-col">
+				<input type='text' name='r' id='monthly_emi' placeholder='Monthly EMI'/> <br><br>
+				<input type='text' name='r' id='total_interest'   placeholder='Total Interest'/> <br><br>
+				<input type='text' name='r' id='total' value='0' placeholder='Show Total'/> <br><br>
+				<input type='text' name='r' id='total' value='0' placeholder='Show Total'/> <br><br>
+			</div>
+    
+        </div>	
+
+</body>
+</html>
+
+<!--  
+
+1. Monthly EMI Formula
+EMI = (P * R * (1 + R)^N) / ((1 + R)^N - 1)
+Explanation:
+P = Loan amount (Principal)
+R = Monthly interest rate = (annualInterestRate / 12) / 100
+N = Loan tenure in months = loanTenureYears * 12
+
+ 2. Total Payment
+totalPayment = EMI * N
+
+ 3. Total Interest
+totalInterest = totalPayment - P
+
+-->
+
+# commit on 2025-07-10 00:00:00
