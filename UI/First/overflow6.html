@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+	<style>
+		.grand-container {
+			height: 600px;
+			width: 1300px;
+			border: 1px solid black;
+			position: relative;
+		}
+
+		.container {
+			height: 500px;
+			width: 1000px;
+			border: 1px solid black;
+			/* position: relative; */
+			background-color: green;
+			position: relative;
+			z-index: 10;
+		}
+
+		.box {
+			height: 100px;
+			width: 100px;
+			border: 1px solid black;
+			padding: 20px;
+			/* overflow: scroll scroll; */
+
+			/* position: relative; */
+			/* top: 200px; */
+			/* right: -200px; */
+			/* top: 400px;
+			bottom: 200px; */
+
+
+			/*  it will always check the position property of parent heirarchy  */
+			/*  if direct parent is sstatic then it will check the grandparent  */
+			/*  if the direct parent is non staic then it will position itself with respct to that contaienrr
+			element  */
+
+			position: absolute;
+			right: 10px;
+
+		}
+
+		.header {
+			opacity: 1;
+			height: 100px;
+			width: 100%;
+			border: 1px solid black;
+			background-color: black;
+			position: fixed;
+			top: 100px;
+			z-index: 20;
+		}
+	</style>
+</head>
+
+<body>
+
+
+	<div class="header">
+		This is nav bar
+	</div>
+
+	<div class="grand-container">
+		.
+		<div class="container">
+
+
+			<div class="box">
+
+				sint debitis alias minima impedit
+			</div>
+
+		</div>
+
+	</div>
+
+	<div class="grand-container">
+		.
+		<div class="container">
+
+
+			<div class="box">
+
+				sint debitis alias minima impedit
+			</div>
+
+		</div>
+
+	</div>
+</body>
+
+</html>
+# commit on 2025-07-22 00:00:00
