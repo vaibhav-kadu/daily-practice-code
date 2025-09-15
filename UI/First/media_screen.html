@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Media Screen</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            html{
+                font-size: 10px;;
+            }
+            body{
+                min-height: 100vh;
+                width: 100vw;
+                overflow: hidden auto;
+            }
+
+            .container{
+                width: 100%;
+                min-height:50rem;
+                border: 1px solid black;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 4rem;
+                padding: 4rem;
+            }
+            .box{
+                height: 30rem;
+                width: 25%;
+                border: 1px solid black;
+                padding: 4rem;
+                font-size: 2rem;
+            }
+
+            @media screen and (max-width:850px){
+                .box{
+                    width: 40%;
+                }
+                html{
+                    font-size: 9px;
+                }
+            }
+            @media screen and (max-width:550px){
+                .box{
+                    width: 80%;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="box">
+                1 Hello  Friends How Are you , Iam fine , I hop All are doing good , But We Need to improve our efforts on our upcomming product which is going to blowing the digital market in india.
+            </div>
+            <div class="box">
+                2 Hello  Friends How Are you , Iam fine , I hop All are doing good , But We Need to improve our efforts on our upcomming product which is going to blowing the digital market in india.
+            </div>
+            <div class="box">
+                3 Hello  Friends How Are you , Iam fine , I hop All are doing good , But We Need to improve our efforts on our upcomming product which is going to blowing the digital market in india.
+            </div>
+        </div>
+    </body>
+</html>
+# commit on 2025-09-16 00:00:00
