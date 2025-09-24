@@ -1,0 +1,45 @@
+ body{
+            background-color: rgb(68, 73, 73);
+        }
+        .main{
+            border-radius: 20px;           
+            
+            align-items: center;
+            align-content:center;
+            justify-content: center;
+            justify-items: center;
+            
+        }
+        form{
+            padding-left: 10%;
+            border-radius: 30px;
+            height:400px;
+            width: 800px;
+            
+            align-items: center;
+            
+            
+            
+        }
+        .inn{
+            border-radius: 30px;
+            background: #cfcdcd;
+            height: 600px;
+            width: 600px;
+            padding-left: 10%;
+            padding-bottom: 10%;
+            padding-top: 10%;
+            padding-right: 10%;
+            align-items: center;
+            
+
+        }
+        input{
+            border-radius: 10px;
+            height: 40px;
+            width: 80%;
+            
+            align-items: center;
+        }
+            
+# commit on 2025-09-25 00:00:00
