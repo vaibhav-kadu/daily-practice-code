@@ -1,0 +1,82 @@
+mysql> create table doctors(doctor_id int primary key auto_increment,doctor_name varchar(100),spec varchar(100),exp int,fee decimal(8,2));
+
+mysql> create table patients(patient_id int primary key auto_increment,patient_name varchar(100),city varchar(50),age int,gender char(1));
+
+create table appointments (appointment_id int primary key auto_increment,doctor_id int,foreign key(doctor_id) references doctors(doctor_id),patient_id int, foreign key(patient_id) references patients(patient_id),appointment_date date,status varchar(20));
+
+ insert into doctors values(0,'a b c','Dentiest',2,500),(0,'p q r','Dentiest',1,400),(0,'m n o','Cardio',0,1500);
+ insert into patients values(0,'vk','warje',45,'m'),(0,'jk','karve',20,'f'),(0,'ak','warje',55,'f'),(0,'mk','karve',25,'m');
+insert into appointments values(0,1,1,'2024-11-06','cancelled'), (0,1,1,'2025-11-06','confirmed'), (0,3,3,'2025-11-06','completed');
+
+
+1.Show the list of doctors who have no appointments scheduled. 
+
+ select doctor_name from doctors where doctor_id not in(select doctor_id from  appointments);
++-------------+
+| doctor_name |
++-------------+
+| p q r       |
++-------------+
+
+
+2.Display patient names and doctor names for appointments scheduled in the current month 
+only.
+
+ select p.patient_name,d.doctor_name from patients p join appointments a on p.patient_id=a.patient_id join doctors d on d.doctor_id=a.doctor_id where appointment_date >= now()-interval 1 month;
++--------------+-------------+
+| patient_name | doctor_name |
++--------------+-------------+
+| jk           | a b c       |
+| mk           | m n o       |
++--------------+-------------+
+
+
+3.Find the average consultation fee for doctors by specialization. 
+select spec,avg(fee) from doctors group by spec;
++----------+-------------+
+| spec     | avg(fee)    |
++----------+-------------+
+| Dentiest |  450.000000 |
+| Cardio   | 1500.000000 |
++----------+-------------+
+
+
+
+
+4.Display specializations that have more than 2 doctors.
+
+select spec from doctors group by spec having count(spec)>2;
++----------+
+| spec     |
++----------+
+| Dentiest |
++----------+
+
+5.Find the city with the highest number of patients.
+ select city,count(city) from patients group by city  order by count(city) desc limit 1  ;
++-------+-------------+
+| city  | count(city) |
++-------+-------------+
+| warje |           3 |
++-------+-------------+
+
+6.Create an INDEX on the specialization column of the doctors table to improve search efficiency. 
+
+mysql> create index sep on doctors(spec);
+
+14.Display details of doctors whose consultation fee is higher than the average fee of all doctors. 
+mysql> select * from doctors where fee>(select avg(fee) from doctors);
++-----------+-------------+--------+------+---------+
+| doctor_id | doctor_name | spec   | exp  | fee     |
++-----------+-------------+--------+------+---------+
+|         3 | m n o       | Cardio |    0 | 1500.00 |
++-----------+-------------+--------+------+---------+
+
+
+15. Show all patients who have taken appointments with more than one doctor.
+
+
+
+
+
+# commit on 2025-10-17 00:00:00
