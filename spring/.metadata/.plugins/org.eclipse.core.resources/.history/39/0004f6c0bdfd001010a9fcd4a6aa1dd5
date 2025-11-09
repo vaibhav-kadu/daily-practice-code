@@ -1,0 +1,12 @@
+<beansxmlns="http://www.springframework.org/schema/beans"xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <beanid="emp"class="com.spring.q1.Employee">
+        <propertyname="id"value="101"/>
+        <propertyname="name"value="Rahul"/>
+        <propertyname="salary"value="45000"/>
+    </bean>
+
+</beans>
+# commit on 2025-11-10 00:00:00
